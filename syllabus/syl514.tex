@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+
+% == margins
+\addtolength{\hoffset}{-0.75in} \addtolength{\voffset}{-0.75in}
+\addtolength{\textwidth}{1.5in} \addtolength{\textheight}{1.6in}
+
+% == this allows separate bibliography
+\usepackage{bibunits}
+\usepackage{natbib}
+
+\newcommand{\R}{\textsf{\textbf{R}}}
+\newcommand{\RStudio}{\textsf{\textbf{RStudio}}}
+\newcommand{\Rmarkdown}{\textsf{\textbf{Rmarkdown}}}
+
+\renewcommand{\refname}{\vspace{-0.5in}} %adjust this number to get spacing right
+
+%% === hyperref options ===
+\usepackage{color}
+\usepackage[bookmarks=true, bookmarksopen=true, linkcolor=webred]{hyperref}
+
+\usepackage{marvosym}
+
+\renewcommand*\abstractname{\vspace{-0.45in}}
+
+%% === document starts here
+
+\title{\bf POLSCI 514 \\ The Use of Social Science Computer Programs}
+\author{\Large {\bf Fall 2021}}
+\date{\large Saki Kuzushima \\ \medskip
+  Office: 5640 Haven Hall, \ Email: \href{mailto:skuzushi@umich.edu}{skuzushi@umich.edu} \\ \medskip
+  Department of Political Science \\ University of Michigan}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The goal of this course is to acquire the working knowledge of computational tools for political science research.
+This course also functions as a supplement to methods classes in the political science department that requires to use computational tools such as \LaTeX and R.
+
+In the first two weeks, this course quickly introduces what \LaTeX\ is and how to use it. 
+All the classes after the first two weeks will focus on learning \href{https://www.r-proect.org/}{R}, a programming language specialized in statistics, data analysis and visualization.
+Specifically, we will start with learning essential syntax in R (arithmetics, objects, loops, functions, etc), and tools to analyze data in R (import and export, subset, and summarize data).
+In addition, we also learn ways to random number generation, simulation, and data visualization. 
+\end{abstract}
+
+
+\section{Logistics}
+
+\begin{itemize}
+\item Lectures: Fridays, 10:00AM -- 12:00PM, 7603 Haven Hall
+\item Office hours: Fridays, 8:30AM -- 10:00AM, 5640 Haven Hall, or by appointment
+\end{itemize}
+
+
+\section{Software}
+
+It is highly recommended that students register and download the following systems before the classes begin.
+Also, \textbf{please bring your laptop to every class.}
+
+\begin{itemize}
+\item \href{https://www.overleaf.com/}{Overleaf}: Overleaf is an online editor and complier for \LaTeX. 
+If you want to use Overleaf, please make an account before the first class starts.
+If you prefer to use your local enrivonment, please download and setup the LaTeX environment before the class.
+
+\item R: Download \href{https://www.r-project.org/}{R language} and \href{https://www.rstudio.com/}{R studio}. 
+R studio is an integrated development environment for R, and it is widely used among R users.
+Alternatively, you can use your prefered editor if you want.
+
+
+\end{itemize} 
+
+
+\section{Course Outline}
+Each class consists of a lecture and a practice session. 
+In the lecture, I will explain the concepts and the codes about the topics we cover in the week. 
+In the practice session, students will be learning by doing, that is, you write your own code.
+Students are strongly encouraged to ask questions and solve problems in class. 
+In the practice session, you can ask questions not only about the topics we covered in the week, but also about other general issues in \LaTeX\ and R coding.
+
+The following course outline is subject to change, depending on the schedules of POLSCI598 and POLSCI599.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+09/03 & Logistics, \LaTeX\ 1  \\
+09/10 & \LaTex 2 \\ 
+09/27 & Objects and data structure \\
+09/24 & Data handling \\
+10/01 & Random number \\
+10/08 & Visualization \\
+10/15 & Loops and conditionals \\
+10/22 & Custom functions \\
+10/29 & List, Array, Apply family \\
+11/5 & dplyr?  \\
+11/12 & ggplot? \\
+11/23 &  \\
+12/10 &  \\
+\hline
+\end{tabular}
+\end{center}
+
+
+09/03 & Logistics, \LaTeX\ 1  \\
+09/10 & Chapter 1 of QSS (skip functions, see Textbooks) \\
+09/27 & Chapter 1 and 2 of QSS \\
+09/24 & Plot and visualization \\
+10/01 & Random number \\
+10/08 & Matrix operations \\
+10/15 & Loops and conditionals \\
+10/22 & Custom functions \\
+10/29 & Apply family\\
+11/5 & Data analysis 1 \\
+11/12 & Data analysis 2 \\
+11/23 & Data analysis 3 \\
+12/10 & Wrap up \\
+\section{Questions and Announcements}
+
+All regular communication will happen via \href{piazza.com/umich/fall2019/polsci514}{Piazza}, which means 
+do not use emails to ask questions. 
+Please use the {\it piazza discussion board} when asking questions.  
+I will check it regularly on the weekdays, but my response will be slower on the weekends. 
+Students are also encouraged to answer and discuss themselves.
+I will add a grade bonus for those who frequently answer other students' questions. 
+Likewise, all announcements are made through Piazza. 
+
+
+
+
+\section{Grades}
+
+The final grades are based on the following items:
+\begin{itemize}
+ \item {\bf Participation} (30\%): The rate of attendance and 
+the level of engagement in class and in Piazza discussions.
+
+ \item {\bf Problem sets} (70\%): The performance of the problem sets.
+Students can complete the problem sets in class, or you can
+take home and submit by the deadline. Please submit the problem sets on Canvas (not emails).  
+Collaboration is allowed, but please acknowledge the collaborators if there are any.      
+In the first two weeks, the problem sets are about \LaTeX\  and the rest of the week will be about R. 
+
+\end{itemize}
+
+
+\section{Textbooks}
+
+Week 3 (the first week of R programming) will cover Chapter 1 of the following textbook. 
+We will also use some example problems from this book. 
+
+\begin{bibunit}[unsrtnat]
+\nocite{imai17:_quant_social_scien}
+\putbib[syl514]
+\end{bibunit}
+\vspace*{1em}      
+
+\section{COVID Safety Protocols}
+The following protocols are based on the University policies as of August 2021. They may change depending on the COVID situation over the semester.
+\begin{itemize}
+ \item \textbf{Vaccination Requirement:} The University of Michigan COVID-19 Vaccination Policy requires faculty, staff, and students to be fully vaccinated for COVID-19 and submit their proof of vaccination information to U-M no later than August 30.\footnote{\url{https://ehs.umich.edu/wp-content/uploads/2021/07/COVID-19_Vaccination_Policy.pdf}}
+ \item \textbf{Face Covering:} The University of Michigan Face Covering Policy for COVID-19 requires all students, staff, faculty, and visitors to wear a face covering that covers the mouth and nose when indoors on U-M property.\footnote{\url{https://ehs.umich.edu/wp-content/uploads/2020/07/U-M-Face-Covering-Policy-for-COVID-19.pdf}}
+       Therefore, everyone attending in-person POLSCI 599 lectures and sections must wear a face covering, unless exceptions set by the Policy apply.
+       When choosing your face covering, please see CDC's guidance available at \url{https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/cloth-face-cover-guidance.html}.
+       In particular, surgical masks are recommended over cloth masks.
+ \item \textbf{Social Distancing:} The instructors may ask students to keep proper social distance during lectures, sections, and office hours.
+ \item \textbf{Ventilation:} The instructors may open doors and windows to ventilate the room during lectures, sections, and office hours.
+ \item \textbf{Class Attendance and Assignment Submission Flexibility:} Everyone should not hesitate to avoid attending a class in case there is any symptoms of COVID-19. Missing classes or submission deadlines due to infection prevention measures will not be punished in grading.
+\end{itemize}
+
+\section{Other Course Policies}
+\begin{itemize}
+ \item \textbf{Student Sexual Misconduct Policy:}
+       Title IX prohibits sex discrimination to include sexual misconduct: harassment, domestic and dating violence, sexual assault, and stalking. If you or someone you know has been harassed or assaulted, you can receive confidential support and academic advocacy at the Sexual Assault Prevention and Awareness Center (SAPAC). SAPAC can be contacted on their 24-hour crisis line, 734--936--3333 and online at sapac.umich.edu. Alleged violations can be reported non-confidentially to the Office for Institutional Equity (OIE) at \href{mailto:institutional.equity@umich.edu}{institutional.equity@umich.edu}. Reports to law enforcement can be made to University of Michigan Police Department at 734--763--3434.\footnote{This statement is taken from: \url{https://sapac.umich.edu/article/faculty-resources-sample-syllabus-language}.}
+
+ \item \textbf{Accommodations for Students with Disabilities:}
+       If you think you need an accommodation for a disability, please let me know at your earliest convenience. Some aspects of this course, the assignments, the in-class activities, and the way the course is usually taught may be modified to facilitate your participation and progress. As soon as you make me aware of your needs, we can work with the Services for Students with Disabilities (SSD) office to help us determine appropriate academic accommodations. SSD (734--763--3000; \url{http://ssd.umich.edu}) typically recommends accommodations through a Verified Individualized Services and Accommodations (VISA) form. Any information you provide is private and confidential and will be treated as such.\footnote{This statement is taken from: \url{https://ssd.umich.edu/article/syllabus-statement}.}
+
+ \item \textbf{Religious-Academic Conflicts:}
+       While the university does not observe religious holidays, it is the policy of the University of Michigan to make every reasonable effort to allow members of the university community to observe their religious holidays without academic penalty.
+       Absensce from classes or examinations for religious reasons does not relieve students from responsibility for any part of the course work required during the period ob absence.
+       Students who expect to miss classes as a consequence of their religious observance shall be provided with a reasonable alternative opportunity to make-up missed academic work.
+       It is the obligation of students to provide faculty with reasonable notice of the dates on which they will be absent.
+       When the absence coincides with an exam or other assignment due date, the options to make up that missed work may be limited and will be determined by the instructor within the boundaries of the respective class.\footnote{This statement is taken from: \textit{Handbook for Faculty and Instructional Staff 2018}, p.~17.}
+
+ \item \textbf{Academic Misconduct:}
+       The University of Michigan community functions best when its members treat one another with honesty, fairness, respect, and trust.
+       The college promotes the assumption of personal responsibility and integrity, and prohibits all forms of academic dishonesty and misconduct.
+       All cases of academic misconduct will be referred to the Office of the Assistant Dean for Undergraduate Education.
+       Being found responsible for academic misconduct will usually result in a grade sanction, in addition to any sanction from the college.
+       For more information, including examples of behaviors that are considered academic misconduct and potential sanctions, please see \url{https://lsa.umich.edu/lsa/academics/academic-integrity.html}.\footnote{This statement is taken from: \textit{Handbook for Faculty and Instructional Staff 2018}, p.~16.}
+
+ \item \textbf{Student Mental Health and Wellbeing:}
+       The University of Michigan is committed to advancing the mental health and wellbeing of its students. If you or someone you know is feeling overwhelmed, depressed, and/or in need of support, services are available. For help, contact \textit{Counseling and Psychological Services (CAPS)} at (734) 764-8312 and \url{https://caps.umich.edu/} during and after hours, on weekends and holidays, or through its counselors physically located in schools on both North and Central Campus. You may also consult \textit{University Health Service (UHS)} at (734) 764-8320 and \url{https://www.uhs.umich.edu/mentalhealthsvcs}, or for alcohol or drug concerns, see \url{https://www.uhs.umich.edu/aodresources}. 
+For a listing of other mental health resources available on and off campus, visit: \url{http://umich.edu/\textasciitilde health}.\footnote{This statement is taken from: \textit{Handbook for Faculty and Instructional Staff 2018}, p.~16.}
+\end{itemize}
+
+\end{document}
