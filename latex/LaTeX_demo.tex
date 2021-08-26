@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+
+% package
+\usepackage{amsmath,amssymb,amsthm}
+
+% margin
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+
+% custom definitions
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{
+
+%% put your name here, so we know who to give credit to %%
+[Your Name Here]
+}
+\newcommand{\hw}{
+%% and which homework assignment is it? put the correct number below        
+1
+}
+
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge POLSCI 514\hfill Problem Set \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Problem Set \hw\qquad\hfill}
+
+%% If you want to define a new command, you can do it like this:
+%% The followins is the useful commands for math and probability. 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+
+
+
+\begin{document}
+\maketitle
+
+
+
+\section{Writing in math mode}
+The most important thing is how to write down mathematical expressions in \LaTeX.
+There are several ways to write equations. 
+
+\subsection{Inline equation}
+The first way is to enclose equations in dollar signs: $x+y=a^2+b^2$.
+This is useful when you want to embed a simple equation in your text.
+
+\subsection{One equation in a new line}
+If you want to use new line for equations, there are two ways:
+
+\[x+y=a^2+b^2\]
+
+or
+
+$$
+x+y=a^2+b^2
+$$
+
+\subsection{Many equations in new lines}
+If you have a chain of deductions, you can line them up like this.
+The \& tells it where to line up---usually you will want it right before the equals sign.
+You should have an 'and' symbol, \&, in each line.
+The double-backslash, $\backslash\backslash$, means indentation. 
+\begin{equation}
+\begin{split}
+  2x &= 2y-10 \\
+  x &=y -5   \\
+\end{split}
+\end{equation}
+
+
+If you don't want to enumerate the equations, add an asterisk:
+\begin{equation}
+\begin{split}
+  2x &= 2y-10 \\
+  x &=y -5  
+\end{split}
+\end{equation}
+
+You might want to include words if they are short:
+\begin{equation}
+\begin{split}
+  2x &= 2y-10 \quad \text{bla bla bla}\\
+  x &=y -5  
+\end{split}
+\end{equation}
+
+
+\subsection{Symbols}
+
+There are some symbols that often come up in the homework. \\
+\begin{itemize}
+    \item $\mathbb{E}$: Expectation  
+    \item $\mathbb{V}$: Variance
+    \item $\mathbb{P}$: Probability measure
+    \item $\mathbb{R}$: Set of real numbers
+\end{itemize}
+This is new area.
+
+In this template, you can simply type $\E$, $\V$ and $\R$ (but not P becasue a backslash and P is already defined as $\P$.) 
+See the header for the alphabets with this functionality. 
+
+You can write Greek letters in the way they are read. $\alpha$, $\beta$, $\gamma$, 
+$\lambda$, $\omega$. Capitalize the first letter to get the capital letters. $\Omega$
+
+Other useful symbols are like this. 
+\begin{itemize}
+    \item $\cup$: union
+    \item $\cap$: intersection
+    \item $a \in A$ : $a$ is an element of $A$
+    \item $A = \{1, 2, 3\}$: specify a set by its elements. 
+    % For { }, you have to escape by a backslash. i.e. \{ \}
+    \item $\mathcal{F}$: set of events
+    \item $\sum_{i=1}^n$: summation 
+    % if you have more than one letter in sub/superscript, use {}.
+\end{itemize}
+
+Finally, you can write subscripts $X_i$ and superscripts $X^2$
+Use curly parentheses if you want to use multiple characters in the subscripts and superscripts such as $X_{ij}$ and $X_{20}$. 
+
+\newpage
+\section{Inserting figures}
+
+\newpage 
+\section{Inserting tables}
+
+An example of displaying summary statistics from a survey.
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ll|rr}
+% NOTE: {l: left, r: right, c: center} will specify the location of text within a cell.
+\hline
+\hline
+\textbf{Variable} & \textbf{Levels} & $\mathbf{n}$ & $\mathbf{\%}$ \\ 
+\hline
+Gender & Male & 1531 & 52.8 \\ 
+   & Female & 1411 & 47.8 \\ 
+   & Other & 1 & 0.0 \\ 
+   & NA & 11 & 0.4\\
+\hline
+\hline
+Age & 19-30 & 474 & 16.0 \\ 
+   & 30-40 & 597 & 20.2 \\ 
+   & 40-50 & 704 & 23.8 \\ 
+   & 50-60 & 566 & 19.2 \\ 
+   & 60-79 & 613 & 20.8 \\ 
+\hline
+\hline
+Education & College & 1688 & 57.1 \\ 
+   & Not College & 1230 & 41.6 \\ 
+   & NA & 36 & 1.2 \\ 
+\hline
+\hline
+\end{tabular}
+\label{tab:sum}
+\caption{Table of summary statistics about the respondents. 
+  }
+\end{table}
+
+
+\newpage
+\section{Utility features for problem sets}
+Some utility functions are defined in the header of this file. 
+The following is some examples.
+
+\begin{question}[1]
+Here is your question.
+\end{question}
+\begin{proof}
+Here is my proof.
+\end{proof}
+
+\begin{question}[2b]
+Another question.
+\end{question}
+\begin{proof}
+Another proof.
+\end{proof}
+
+There are similar environments for Theorems.
+
+\begin{theorem}[3]
+  Some theorem.
+\end{theorem}
+\begin{proof}
+  Insert your proof here.
+\end{proof}
+
+%%%% don't delete the last line!
+\end{document}
