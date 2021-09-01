@@ -1,0 +1,107 @@
+\documentclass[11pt]{article}
+
+% package
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% margin
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+
+% custom definitions
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{
+
+%% put your name here, so we know who to give credit to %%
+[Your Name Here]
+}
+\newcommand{\hw}{
+%% and which homework assignment is it? put the correct number below        
+1
+}
+
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge POLSCI 514\hfill Problem Set \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Problem Set \hw\qquad\hfill}
+
+%% If you want to define a new command, you can do it like this:
+%% The followins is the useful commands for math and probability. 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+Replicate the following math expressions and equations.
+\end{question}
+
+\begin{equation*}
+\begin{split}
+  x + y^2 + z = 100 \\ 
+  \\
+  X = \{1, \ldots, N\} \\
+  \\
+  \left( 1 + \frac{1}{1 + \frac{1}{x}} \right) \\
+  \\
+  \sum_{i=1}^{N} (X_i^2 - \bar{X})^2 \\ 
+  \\
+  \begin{pmatrix}
+    1 & 2 & 3 \\
+    4 & 5 & 4 \\
+  \end{pmatrix}
+  \times
+  \begin{pmatrix}
+    1 & 2  \\
+    4 & 5  \\
+  \end{pmatrix} \\
+  \\
+  (X^\intercal X)^{-1}X^\intercal Y \\
+  \\
+  Y_i = \beta_0 + \beta_1 x_{1i} + \beta_2 x_{2i} + \ldots + \beta_p x_{pi} + \epsilon_i \\ 
+\end{split}
+\end{equation*}
+
+\clearpage
+\begin{question}[2]
+Replicate the following expressions related to probability.
+\end{question}
+
+\begin{equation*}
+\begin{split}
+  \mathbb{P}(X_i = 1) = \frac{1}{K} \\
+  \\
+  \mathbb{P}(A \vert B) \propto \mathbb{P}(B \vert A) \mathbb{P}(A) \\
+  \\
+  \mathbb{E}[X] = \mu \\
+  \\
+  \mathbb{V}(X) = \sigma^2 \\
+  \\
+  X_i \stackrel{i.i.d}{\sim} \text{Unif}(0, 1) \\
+  \\
+  p(x) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp \left(- \frac{1}{2}(\frac{x - \mu}{\sigma})^2\right) \\
+\end{split}
+\end{equation*}
+
+
+%%%% don't delete the last line!
+\end{document}

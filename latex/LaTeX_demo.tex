@@ -2,6 +2,9 @@
 
 % package
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
 
 % margin
 \addtolength{\evensidemargin}{-.5in}
@@ -125,22 +128,163 @@ Other useful symbols are like this.
     % For { }, you have to escape by a backslash. i.e. \{ \}
     \item $\mathcal{F}$: set of events
     \item $\sum_{i=1}^n$: summation 
+    \item $\prod_{i=1}^n$: product 
+    \item $\int_{x=0}^1$: integral 
+    \item $\sim$: distributed as 
     % if you have more than one letter in sub/superscript, use {}.
 \end{itemize}
 
-Finally, you can write subscripts $X_i$ and superscripts $X^2$
-Use curly parentheses if you want to use multiple characters in the subscripts and superscripts such as $X_{ij}$ and $X_{20}$. 
+
+\subsection{Matrix}
+
+Plain matrix
+\begin{equation}
+\begin{matrix}
+1 & 2 & 3\\
+a & b & c
+\end{matrix}
+\end{equation}
+
+Parenthesis
+\begin{equation}
+\begin{pmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{pmatrix}
+\end{equation}
+
+Square brackets
+\begin{equation}
+\begin{bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{bmatrix}
+\end{equation}
+
+
+
+\subsection{Others}
+\begin{itemize}
+    \item superscripts: $X^2$ 
+    \item subscripts: $X_2$ 
+    \item both superscripts and subscripts: $X_2^2$ 
+    \item both superscripts and subscripts: $X_2^2$ 
+    \item fractions: $\frac{1}{x}$ 
+    \item binomial: $\binom{1}{x}$ 
+    \item Parentheses size: normal $()$, big $\big(\big)$, Big $\Big(\Big)$, Bigg $\Bigg(\Bigg)$
+    \item Parentheses size (Alternative): left and right e.g. $\left[  \frac{ N } { \left( \frac{L}{p} \right)  - (m+n) }  \right]$ 
+    \item three dots: $\ldots$ $\cdots$ e.g. $X = 1, \ldots, N$ 
+    \item transpose: $X^{\intercal}$ vs $X^{T}$ 
+    \item white space: $x\ y$, $x\quad y$, $x\qquad y$
+    \item cases: 
+      \begin{equation}
+          Y = 
+          \begin{cases}
+            1 &\text{if}\quad Y^* > 0 \\
+            0 & \text{otherwise} 
+          \end{cases}
+      \end{equation}
+    \item infinity: $\infty$ 
+    \item text on top of equation/symbols $X \stackrel{i.i.d}{\sim} Normal(0, 1)$
+\end{itemize}
+
+
 
 \newpage
 \section{Inserting figures}
 
-\newpage 
+
+\begin{figure}[h!]  % Figure float begins. []: controls where the figure is placed
+\centering % place the figure at the center in the float
+\includegraphics[scale=0.3]{figs/normal.pdf} % []: controls the size of the figure; {}: specifies the path to the figures
+\caption{ % always add caption to the figure 
+  Some caption here
+}
+\label{fig:normal} % label to be used when we reference the figure
+\end{figure}
+
+\subsection{Where to place figures}
+The following parameters will control where the figure is placed.
+\begin{itemize}
+  \item h: here 
+  \item t: top 
+  \item b: bottom 
+  \item p: place it in a page that only contains float (i.e. figures or tables)
+  \item !: "please really respect my choices here" 
+\end{itemize}
+
+\subsection{The size of figures}
+\begin{itemize}
+  \item scale=1.5 : 1.5 times the real size 
+  \item width=4cm, height=3cm: manually specify the width and the height 
+  \item width=\textbackslash textwidth: the same width with the text width 
+\end{itemize}
+
+\subsection{Reference}
+\begin{itemize}
+  \item \textbackslash label\{fig:normal\}: define the name of the figure to be referenced 
+  \item \textbackslash ref\{fig:normal\}: refernece the figure. e.g. Fig \ref{fig:normal} shows a histogram of ...
+\end{itemize}
+
+
+
+\begin{figure}[t]  
+\centering 
+\includegraphics[width=\textwidth]{figs/normal.pdf} 
+\caption{ 
+  Top with text width 
+}
+\end{figure}
+
+\begin{figure}[b]  
+\centering 
+\includegraphics[width=3cm, height=4cm]{figs/normal.pdf} 
+\caption{ 
+  bottom with manual width and height
+}
+\end{figure}
+
+\begin{figure}[p!]  
+\centering 
+\includegraphics[scale=0.7]{figs/normal.pdf} 
+\caption{ 
+  page 
+}
+\end{figure}
+
+\subsection{Multiple subfigures}
+This requires two packages ``caption'' and ``subcaption''  
+\begin{figure}
+     \centering
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figs/normal.pdf}
+         \caption{Normal}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figs/unif.pdf}
+         \caption{Uniform}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.3\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{figs/beta.pdf}
+         \caption{Beta}
+     \end{subfigure}
+        \caption{Three distributions}
+\end{figure}
+
+
+\clearpage % make sure that all the figures are placed within the section (c.f. \newpage doesn't assure this)
 \section{Inserting tables}
 
+Inserting tables are very similar to inserting figures.
 An example of displaying summary statistics from a survey.
 
 
-\begin{table}[h!]
+\begin{table}[h!] % start a float for a table
 \centering
 \begin{tabular}{ll|rr}
 % NOTE: {l: left, r: right, c: center} will specify the location of text within a cell.
