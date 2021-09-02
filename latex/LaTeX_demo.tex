@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 
-% package
+% lpackage 
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
 \usepackage{caption}
@@ -188,7 +188,32 @@ a & b & c
     \item text on top of equation/symbols $X \stackrel{i.i.d}{\sim} Normal(0, 1)$
 \end{itemize}
 
+\subsection{Multiple line equations}
+Some examples
+\begin{equation}
+\begin{split}
+    f(x \vert p) &= \prod_{i=1}^n p^{x_i} (1-p)^{1-x_i} \\
+    &= \exp\Big(\sum_{i=1}^n x_i \log p + (n-\sum_{i=1}^n x_i) \log(1-p)\Big) \\
+    &= \exp\Big(\sum_{i=1}^n x_i (\log p + \log(1-p)) + n \log(1-p) \Big)
+\end{split}
+\end{equation}
 
+\begin{equation}
+\begin{split}
+    &p(\pi, \eta \vert D, C^l) \\
+    &\propto p(\pi) p(\eta) p(D^{lp}, C^{lp} \vert \pi, \eta) p(D^{ln}, C^{ln} \vert \pi, \eta) \Big[p(D^u \vert \pi, \eta)\Big]^{\lambda} \\
+    &= p(\pi) p(\eta) 
+    \times \prod_{i=1}^{N^{lp}} p(D_i^{lp} \vert Z_{ik^*}, \eta) p(Z_{ik^*} \vert \pi) \\
+    &\quad \times \prod_{i=1}^{N^{ln}} \sum_{k \neq k^*} \Big\{ p(D_i^{ln} \vert Z_{ik}, \eta) p(Z_{ik} \vert \pi) \Big\} 
+    \times \Bigg[\prod_{i=1}^{N^{u}} \sum_{k=1}^K \Big\{ p(D_i^{u} \vert Z_{ik}, \eta) p(Z_{ik} \vert \pi) \Big\} \Bigg]^{\lambda} \\
+    &\propto \underbrace{\prod_{k=1}^K \pi_k^{\alpha_k - 1} \prod_{v=1}^V \prod_{k=1}^K \eta_{vk}^{\beta_k - 1}}_\text{prior}
+    \times 
+    \underbrace{\prod_{i=1}^{N^{lp}} \Big[ \prod_{v=1}^V \eta_{vk^*}^{D_{iv}}\times \pi_{k^*} \Big]}_\text{positive labeled doc. likelihood} \\
+    &\quad \times \underbrace{\prod_{i=1}^{N^{ln}} \sum_{k \neq k^*} \Big\{ \prod_{v=1}^V \eta_{vk}^{D_{iv}}\times \pi_k \Big\}}_\text{negative labeled doc. likelihood} 
+    \times \underbrace{\Bigg[\prod_{i=1}^{N^{u}} \sum_{k=1}^K \Big\{ \prod_{v=1}^V \eta_{vk}^{D_{iv}}\times \pi_k  \Big\}\Bigg]^{\lambda}
+}_\text{unlabeled doc. likelihood}
+\end{split}
+\end{equation}
 
 \newpage
 \section{Inserting figures}
