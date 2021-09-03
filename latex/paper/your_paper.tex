@@ -1,0 +1,225 @@
+% Compile using LaTeX, not pLaTeX.
+% Output command: dvipdfmx -p letter filename
+\documentclass[12pt%
+%,twoside
+]{article}
+
+% margins
+\addtolength{\hoffset}{-.75in} \addtolength{\voffset}{-1in}
+\addtolength{\textwidth}{1.5in} \addtolength{\textheight}{2in}
+
+% basic packages
+\usepackage{setspace}
+\usepackage{latexsym}
+\usepackage{amssymb,amsmath, bm}
+\usepackage{graphicx}
+\usepackage{marvosym}
+\usepackage{subcaption}
+
+% tikz for pictures 
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{positioning}
+
+% bibliography packages
+\usepackage{natbib}
+\bibliographystyle{ECA_jasa}
+
+% hyperref options 
+\usepackage{color}
+\usepackage[pdftex, bookmarksopen=true, bookmarksnumbered=true,
+pdfstartview=FitH, breaklinks=true, urlbordercolor={0 1 0}, citebordercolor={0 0 1}]{hyperref}
+\definecolor{darkgreen}{rgb}{0,0.545,0}
+\definecolor{darkyellow}{rgb}{0.933,0.604,0}
+
+% algorithm environment 
+\usepackage[ruled,vlined]{algorithm2e}
+
+% packages for tables
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+% dcolumn package (incompatible with `sgame.sty')
+%\usepackage{dcolumn}
+%\newcolumntype{.}{D{.}{.}{-1}}
+%\newcolumntype{d}[1]{D{.}{.}{#1}}
+
+% rotating package
+%\usepackage{rotating}
+%\usepackage{lscape}
+
+% indicator function 
+\usepackage{bbm}
+
+% anonymous submission
+\newcommand{\blind}{0}
+
+% for github
+\newcommand{\showfigs}{1}
+
+% theorem package
+\usepackage{theorem}
+\theoremstyle{break}
+\theoremheaderfont{\scshape}
+\theorembodyfont{\rm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+%\newtheorem{algorithm}{Algorithm} % disabled to use algorithm2e
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+% new commands
+\newcommand\addprime{^{\prime}}
+\newcommand\addtop{^{\top}}
+\newcommand\addast{^{\ast}}
+\newcommand\addinv{^{-1}}
+\newcommand\addsq{^{2}}
+\newcommand\ud{\mathrm{d}}
+\newcommand\dist{\buildrel\sf d\over\sim}
+\newcommand\convd{\buildrel\sf d\over\rightarrow}
+\newcommand\convp{\buildrel\sf p\over\rightarrow}
+\newcommand\ind{\stackrel{\sf indep.}{\sim}}
+\newcommand\iid{\stackrel{\sf i.i.d.}{\sim}}
+\newcommand\defarrow{\stackrel{\sf def.}{\Longleftrightarrow}}
+%\newcommand\defarrow{\buildrel\sf def.\over\Longleftrightarrow}
+\newcommand\logit{{\rm logit}}
+\renewcommand\r{\right}
+\renewcommand\l{\left}
+\newcommand\Var{{\sf Var}}
+\newcommand\var{{\sf var}}
+\newcommand\Cov{{\sf Cov}}
+\newcommand\bone{\mathbf{1}}
+\newcommand\bzero{\mathbf{0}}
+\newcommand\balpha{{\boldsymbol \alpha}}
+\newcommand\bbeta{{\boldsymbol \beta}}
+\newcommand\btheta{{\boldsymbol \theta}}
+\newcommand\bphi{{\boldsymbol \phi}}
+\newcommand\blambda{{\boldsymbol \lambda}}
+\newcommand\E{\mathbb{E}}
+\newcommand\V{\mathbb{V}}
+\newcommand\bP{\mathbb{P}}
+\newcommand\bR{\mathbb{R}}
+\newcommand\bN{\mathbb{N}}
+\newcommand\bE{\mathbf{E}}
+\newcommand\bH{\mathbf{H}}
+\newcommand\bI{\mathbf{I}}
+\newcommand\bT{\mathbf{T}}
+\newcommand\bt{\mathbf{t}}
+\newcommand\bU{\mathbf{U}}
+\newcommand\bW{\mathbf{W}}
+\newcommand\bX{\mathbf{X}}
+\newcommand\bY{\mathbf{Y}}
+\newcommand\bZ{\mathbf{Z}}
+\newcommand\cF{\mathcal{F}}
+\newcommand\cC{\mathcal{C}}
+\newcommand\cN{\mathcal{N}}
+\newcommand\cS{\mathcal{S}}
+\newcommand\cU{\mathcal{U}}
+\newcommand\cP{\mathcal{P}}
+\newcommand\cO{\mathcal{O}}
+\newcommand\cX{\mathcal{X}}
+\newcommand\sfU{\mathsf{U}}
+\newcommand\sfW{\mathsf{W}}
+\newcommand\sfX{\mathsf{X}}
+\newcommand\sfY{\mathsf{Y}}
+\newcommand\sfZ{\mathsf{Z}}
+\newcommand{\diag}{\mathop{\mathrm{diag}}}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+\newcommand{\plim}{\operatornamewithlimits{plim}}
+\newcommand\indep{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+\DeclareMathOperator{\sgn}{sgn}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\qed}{\hfill \ensuremath{\Box}}
+
+% dotted lines in tables
+\usepackage{arydshln}
+
+% spacing between sections and subsections
+\usepackage[compact]{titlesec}
+
+% times new roman
+%\usepackage{times}
+
+% multiple figure control
+%\usepackage{subfigure}
+%\def\subfigcapskip{-.i2n}
+%\def\subfigtopskip{-.55in}
+%\def\subfigbottomskip{-i1n}
+%\def\subfigcapmargin{i1n}
+
+
+\allowdisplaybreaks[4] % allow equations to be broken into pages
+%\special{pdf: pagesize width 8.5truein height 11.0truein}
+
+\setcounter{tocdepth}{2} % table of contents depth
+
+\begin{document}
+
+
+\newcommand\spacingset[1]{\renewcommand{\baselinestretch}%
+{#1}\small\normalsize}
+
+\spacingset{1.1}
+
+%\makeatletter
+%\def\thefootnote{\ifnum\c@footnote>\z@\leavevmode\lower.5ex\hbox{$^{*}$}\fi}
+%\makeatother
+
+\newcommand{\tit}{\bf Title}
+
+\if0\blind
+{
+\title{\tit\thanks{
+  Acknowledgement, funding, etc... 
+}
+}
+
+\author{
+ Your name\footnotemark[1] \thanks{
+    Ph.D.~Student, Department of Political Science, University of Michigan.
+    }
+}
+
+\date{
+% First draft: [date_of_first_draft] \\if you want to show the date the first draft was made.
+Draft version: \today
+}
+
+\maketitle
+}
+
+\if1\blind \title{\bf \tit} \maketitle
+\fi
+
+\pdfbookmark[1]{Title Page}{Title Page}
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\begin{abstract}
+\input{inputs/abstract}
+\end{abstract}
+
+\clearpage % start new page
+
+\onehalfspacing
+
+\input{inputs/intro}
+\input{inputs/method}
+\input{inputs/results}
+\input{inputs/concluding}
+
+\clearpage
+\nocite{*} % display all papers in the reference even though they are not cited in the main text
+\pdfbookmark[1]{References}{References}
+\bibliography{your_paper} % change into the name of .bib file
+
+\clearpage
+\appendix
+\input{inputs/appendix}
+
+\end{document}
