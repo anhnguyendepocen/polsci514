@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+
+% lpackage 
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% margin
+\addtolength{\evensidemargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\textwidth}{0.8in}
+\addtolength{\textheight}{0.8in}
+\addtolength{\topmargin}{-.4in}
+
+% custom definitions
+\newtheoremstyle{quest}{\topsep}{\topsep}{}{}{\bfseries}{}{ }{\thmname{#1}\thmnote{ #3}.}
+\theoremstyle{quest}
+\newtheorem*{definition}{Definition}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{question}{Question}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{challengeproblem}{Challenge Problem}
+\newcommand{\name}{
+
+%% put your name here, so we know who to give credit to %%
+[Your Name Here]
+}
+\newcommand{\hw}{
+%% and which homework assignment is it? put the correct number below        
+1
+}
+
+\title{\vspace{-50pt}
+\Huge \name
+\\\vspace{20pt}
+\huge POLSCI 514\hfill Problem Set \hw}
+\author{}
+\date{}
+\pagestyle{myheadings}
+\markright{\name\hfill Problem Set \hw\qquad\hfill}
+
+%% If you want to define a new command, you can do it like this:
+%% The followins is the useful commands for math and probability. 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+
+
+
+\begin{document}
+\maketitle
+
+\begin{question}[1]
+Here is your question.
+\end{question}
+
+\begin{proof}
+Here is my proof.
+\end{proof}
+
+\begin{question}[2a]
+Another question.
+\end{question}
+
+Your answer here. 
+
+\begin{question}[2b]
+Another question.
+\end{question}
+
+Your answer here.
+
+%%%% don't delete the last line!
+\end{document}
