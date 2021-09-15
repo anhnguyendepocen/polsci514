@@ -29,8 +29,6 @@ sqrt(9)
 1 + 2 / 3
 (1 + 2) / 3
 
-
-
 # Objects ------------------------------------------------------------------
 
 # You can store values in "objects"
@@ -83,7 +81,6 @@ typeof(obj)
 obj <- T # TRUE
 obj <- F # FALSE
 
-
 # More operators -----------------------------------------------------------
 
 # +, -, /, * are called operators
@@ -103,8 +100,6 @@ obj_t | obj_t # (TRUE or TRUE) is TRUE
 obj_t | obj_f # (TRUE or FALSE) is TRUE
 obj_f | obj_f # (FALSE or FALSE) is FALSE
 
-
-
 # (b) relational operators
 x <- 10
 y <- 3
@@ -121,7 +116,6 @@ y <= z
 # equality 
 y == 3
 y != 3
-
 
 # This operators are important when you want to have complicated subset of data. 
 
@@ -180,8 +174,7 @@ my_vector == 15
 # use relational operators on vectors
 my_vector > 15
 
-
-# Subsetting vectors 
+# Subsetting vectors ----------------------------------------------------------
 
 # subset by index
 score[1]
@@ -194,9 +187,7 @@ my_vector[c('a', 'b')]
 
 # subset by the values
 my_vector[my_vector > 15]
-
-
-
+subset(my_vector, subset=my_vector > 15)
 
 # Functions --------------------------------------------------------------------
 
@@ -234,7 +225,6 @@ seq(from = 0, to = 100, by = 10)
 seq(0, 100, 10) # this works, but
 seq(from = 0, to = 100, by = 10) # is clearer and easy to understand
 
-
 # You can define your own functions, and I will cover it later.
 
 #  Quiz: ----------------------------------------------------------------------
@@ -250,7 +240,6 @@ seq(from = 0, to = 100, by = 10) # is clearer and easy to understand
 world <- data.frame(country=c('USA', 'CHN', 'IND', 'RUS'),
                     pop=c(382, 1398, 1366, 144),
                     area=c(3.797, 3.705, 1.269, 6.612))
-
 
 class(world)
 
@@ -312,8 +301,9 @@ world[world$pop > 1000,]
 world[1,2]
 world[1, world$country == "USA"]
 
-
-# NOTE: subset()
+#Alternatively, subset()
+subset(world, world$country == "USA")
+subset(world, world$country == "USA", select=pop)
 
 # NOTE: Quiz: More subset -----------------------------------------------------------
 # more compliacted subset, with story? 
