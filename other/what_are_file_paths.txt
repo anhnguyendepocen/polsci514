@@ -1,0 +1,84 @@
+###############################################################################################################
+# What are file paths?
+# (written by Fabricio Vasselai)
+###############################################################################################################
+
+Nowadays, many computer users are not used to having to think about where in their computer their
+files are stored. Which means, many users never had to deal with or have heard of what is called
+"file paths". They simply search for a file name and the computer finds it for them.
+
+However, it is imperative that we all know how to identify file paths, because when we are using
+functions in R like the read.csv function, you have to infor such function where exactly in your
+computer a file is located. Which means, you have to know the file path.
+
+Let me give definitions first. The path of a given file is just a convenient way of representing
+where exactly in your hard drive such file is stored. Usually, such address is represented with
+folders, subfolders and then file name.
+
+
+###############################################################################################################
+# Windows and MacOS/Linux examples
+###############################################################################################################
+
+Let me give examples.
+
+#### Windows ####
+
+In Windows, suppose a photo that you have stored has file path "C:/User/MyPictures/photo_in_cancun.jpg".
+This means that the sweet picture you took last time you went to Cancun, and which you stored in a file
+named "photo_in_cancun.jpg", can be found in the hard drive partition that Windows calls "C:", within
+"C:"'s a folder called "MyPictures", but which in its turn is inside a folder called "User" (which means
+we say that "MyPicture" is a subfolder of folder "User"). Similarly, suppose you have a CSV file called
+"mydata.csv" stored in the hard drive partition "D" (Windows uses single uppercase letters to identify
+hard drive partitions), folder "Umich" and subfolder "class514". Then, the file path of "mydata.csv"
+would be "D:/Umich/class514/mydata.csv".
+
+Why is that important? Well, because file path is what you give as input in the first argument of the R
+function read.csv. For instance:
+loaded.data <- read.csv("D:/Umich/class514/mydata.csv")
+
+Obs: don't forget that the function read.csv, as many functions, returns an object. In this case, it returns
+an object of type data.frame that contains all the information read from the "mydata.csv" file. But you have
+to inform R the name of an object where you want to store such output. In the example above, the read.csv
+function is assigning to object "loaded.data" all the information read from "mydata.csv".
+
+#### MacOS/Linux #### 
+
+In Mac OS, suppose a photo that you have stored has file path "~/Desktop/MyPictures/photo_in_cancun.jpg".
+This means that the sweet picture you took last time you went to Cancun, and which you stored in a file
+named "photo_in_cancun.jpg", can be found in the main hard drive you are currently using, within a folder
+called "MyPictures", but which in its turn is inside a folder called "User" (which means we say that
+"MyPicture" is a subfolder of folder "User").  Similarly, suppose you have a CSV file called "mydata.csv"
+stored in the main hard drive you are currently using, inside folder "Umich" and subfolder "class514".
+Then, the file path of "mydata.csv" would be "~/Umich/class514/mydata.csv".
+
+Why is that important? Well, because file path is what you give as input in the first argument of the R
+function read.csv. For instance:
+loaded.data <- read.csv("~/Umich/class514/mydata.csv")
+
+Obs: don't forget that the function read.csv, as many functions, returns an object. In this case, it returns
+an object of type data.frame that contains all the information read from the "mydata.csv" file. But you have
+to inform R the name of an object where you want to store such output. In the example above, the read.csv
+function is assigning to object "loaded.data" all the information read from "mydata.csv".
+
+
+###############################################################################################################
+# Helpful links on how to find the path of a file
+###############################################################################################################
+
+In the following link you will see details of 5 ways to find the path of a file in Windows:
+https://www.wikihow.com/Find-a-File%27s-Path-on-Windows
+
+In the following links you will see some examples of how to find the path a file in a MacOS:
+https://www.josharcher.uk/code/find-path-to-folder-on-mac/
+https://superuser.com/questions/371513/how-to-tell-full-path-of-file-on-mac
+https://apple.stackexchange.com/questions/252171/mac-finder-getting-the-path-of-a-directory-or-file-as-as-string
+https://www.cnet.com/how-to/how-to-copy-a-file-path-in-os-x/
+
+In the following links you will see some examples of how to find the path a file in Linux:
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Step_by_Step_Guide/s1-navigating-pwd.html
+https://stackoverflow.com/questions/5265702/how-to-get-full-path-of-a-file
+
+
+
+
