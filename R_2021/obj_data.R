@@ -22,11 +22,20 @@
 
 # square root
 sqrt(9)
-# note: something() is called a function (explained in later weeks)
+# note: something() is called a function (explained later)
 
 # use () to change the order of computation as we do in hand writing 
 1 + 2 / 3
 (1 + 2) / 3
+
+# mini quiz -----------------------------------------------------------------
+
+# Compute 100 times 5 divided by 3 
+100 * 5 / 3
+
+# compute 5 squared and 4 cubed
+5^2
+4**3
 
 # Objects ------------------------------------------------------------------
 
@@ -79,6 +88,16 @@ typeof(obj)
 # Or, You can simply write
 obj <- T # TRUE
 obj <- F # FALSE
+
+# Mini quiz ----------------------------------------------------------------
+
+# Create an object called "iphone" and assign a value 12 and print the value
+iphone <- 12
+print(iphone)
+iphone
+# change the value of the object "iphone" to 13 and print the value
+iphone <- 13
+print(iphone)
 
 # More operators -----------------------------------------------------------
 
@@ -142,9 +161,12 @@ a & b
 # The types of the elements of (atomic) vectors must be the same
 # (c.f. Later we learn vectors with different types (This is called List)).
 
-lgl_var <- c(TRUE, FALSE)
-dbl_var <- c(1, 2.5, 4.5)
-chr_var <- c("these is", "something")
+vector_logical <- c(TRUE, FALSE)
+vector_logical
+vector_double <- c(1, 2.5, 4.5)
+vector_double
+vector_character <- c("these is", "something")
+vector_character
 
 score <- c(90, 89, 87, 67, 75, 50, 88, 89)
 score
@@ -153,7 +175,7 @@ score
 score_first <- c(90, 89)
 score_second <- c(50, 82)
 score_combined <- c(score_first, score_second)
-
+score_combined
 # Check the length of a vector by 'length()'
 length(score_first)
 
@@ -173,14 +195,49 @@ my_vector == 15
 # use relational operators on vectors
 my_vector > 15
 
-# Subsetting vectors ----------------------------------------------------------
+# use logical operators
+a <- c(T, T, F)
+b <- c(F, F, T)
+
+a & b
+a | b
+
+# Mini quiz ------------------------------------------------------------------
+
+# create an vector called "fruits" with values 1, 2, 1.5, 
+# and assign the name "apple", "pear", "orange"
+fruits <- c(1,2,1.5)
+names(fruits) <- c("apple", "pear", "orange")
+fruits
+
+# change the value of "apple" to be 1.2
+fruits[1] <- 1.2
+fruits
+
+# create a vector called "vegetables" with value 0.5, 0.8, 1
+# and assign the name "onion", "carrot", "tomato" to the vector
+vegetables <- c(0.5, 0.8, 1)
+names(vegetables) <- c("onion", "carrot", "tomato")
+vegetables
+
+# combine the vector "fruits" and "vegetables" and assign the combined vector to
+# an object called "grocery"
+grocery <- c(fruits, vegetables)
+grocery
+
+# what is the length of the vector "grocery"?
+length(grocery)
+
+# Subset vectors ----------------------------------------------------------
 
 # subset by index
+score
 score[1]
-score[c(1,2)]
+score[c(1,2,5)]
 score[-1] # exclude
 
 # subset by name
+my_vector
 my_vector['a']
 my_vector[c('a', 'b')]
 
@@ -188,12 +245,14 @@ my_vector[c('a', 'b')]
 my_vector[my_vector > 15]
 
 select <- my_vector > 15
+select
 my_vector[select]
-subset(my_vector, subset=my_vector > 15)
+
+
 
 # Functions --------------------------------------------------------------------
 
-# Functions take some input and resutn some output. Inputs are often called arguments. 
+# Functions take some input and return some output. Inputs are often called arguments. 
 # We have seen some functions, such as length() and sqrt()
 # (In fact, + - / * can also be seen as functions!)
 
@@ -215,7 +274,10 @@ sum(score)
 
 # sequence of values
 seq(from = 0, to = 100, by = 10)
+seq(0, 100, 10)
 1:10 # when by = 1
+
+?seq
 
 # Use ?some_function for help
 ?seq
@@ -247,10 +309,11 @@ names(score) <- c('tom', 'james', 'mary', 'john', 'sarah', 'david', 'lisa', 'chr
 
 # How many students receive scores higher than the mean? 
 
-# Who received the higest and the lowest score?
+# Who received the highest and the lowest score?
 
 # Mary's score was recorded incorrectly and it was 83. 
 # Create a new vector 'correct_score' with the correct values.
+ 
 
 
 # Dataframe ------------------------------------------------------------------
@@ -334,7 +397,8 @@ subset(world, world$country == "USA", select=pop)
 
 # Quiz: More subset -----------------------------------------------------------
 
-score_data <- data.frame(names=c('tom', 'james', 'mary', 'john', 'sarah', 'david', 'lisa', 'chris', 'mitchell', 'eric'),
+score_data <- data.frame(names=c('tom', 'james', 'mary', 'john', 'sarah', 'david',
+                                 'lisa', 'chris', 'mitchell', 'eric'),
                          group=c(1,2,3,1,2,3,1,2,3,1),
                          hw1=c(90, 89, 83, 28, 82, 72, 63, 12, 5, 64),
                          hw2=c(82, 43, 98, 42, 57, 94, 11, 43, 42, 54))

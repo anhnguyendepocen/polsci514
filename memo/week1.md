@@ -7,6 +7,8 @@
 
 2. Syllabus overview
 - OH policy
+- HW
+- Target audience (If you have solid background in R, then this may not be the best class for you.)
 
 3. How I organize the class
 - two parts (1h each)
@@ -17,6 +19,7 @@
 - present solutions and discuss  
 
 4. QA
+- some tips
 
 5. (if time) Overleaf intro
 ----------------------------
