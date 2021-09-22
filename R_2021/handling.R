@@ -221,15 +221,14 @@ diff_veptr <- turnout$ANES - veptr
 # We learn anthor object similar to dataframe: Matrix. 
 
 # We learned that we can add names to a vector 
-x <- c(1,2,3,4,5,6)
-names(x) <- c('a', 'b', 'c', 'd', 'e', 'f')
+X <- c(1,2,3,4,5,6)
+names(X) <- c('a', 'b', 'c', 'd', 'e', 'f')
 # What we are doing here is that we are adding an attribute to a vector
-str(attributes(x))
 
 # Likewise, we can add a different attribute, dimensions.
-# This will effectively turns a vector into a matrix.
-dim(x) <- c(2,3)
-x
+# This will effectively turns a vector into a matriX.
+dim(X) <- c(2,3)
+X
 
 # Normally, we simply create a matrix using matrix() function. 
 # First, the following code will create a 2 * 2 matrix with all elemenets being 1. 
@@ -240,8 +239,33 @@ X3 <- matrix(c(1,2,3,4), nrow = 2, ncol = 2, byrow=T)
 # Note that the vector is arranged by column (you can change this by byrow argument
 # in the matrix function)
 
+# Add rownames and column names to a matrix
+rownames(X1) <- c('a', 'b')
+colnames(X1) <- c('A', 'B')
 
-# Whenever we multiply matrices, we have to be careful about the dimensions. 
+# Add a row to a matrix
+newrow <- c(2,2)
+X1_new <- rbind(X1, newrow)
+
+# add a column to a matrix
+newcol <- c(5,6)
+X2_new <- cbind(X2, newcol)
+
+# Matrix and scalar: element-wise operation
+X1 + 1
+X1 * 10
+X1 - 1
+X1 / 2
+
+# Matrix and matrix: element-wise operation (if conformable) 
+X1 + X2
+X1 * X2
+X1 - X2
+X1 / X2
+
+
+
+# Whenever we do matrix multiplication, we have to be careful about the dimensions. 
 Y <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
 Z <- matrix(c(10, 20, 30, 40, 50, 60), nrow = 3, ncol = 2)
 W <- matrix(1:10, nrow = 2, ncol=5)
@@ -274,25 +298,22 @@ df %*% X # error
 df_mat %*% X
 
 
-# If you use *, it will comute the element-wise multiplication
-
-# This is possible
-X * X
-# But the result is different from this!!
-X %*% X
+# Note that * does element-wise multiplication while %*% does matrix multiplication 
+X2 * X2
+X2 %*% X2
 
 
 # You can transpose and invert matrices 
 # This will transpose the matrix
 t(Y)
 # This will invert the matrix
-solve(X)
+solve(X2)
 # THis will return error because only square matrices can be invertible. 
 solve(Y) # error
 
-
 # Exercise --------------------------------------------------------------------
-# NOTE: 
+
+# NOTE: Add exercise
 
 
 
