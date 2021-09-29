@@ -71,21 +71,6 @@ mean(turnout_pre$diff)
 mean(turnout_mid$diff)
 
 
-# Exercise --------------------------------------------------------------------
-
-# Q1. Create a matrix object 'A' with 4 rows and 3 columns, filled with numbers 1...12 by rows.
-# i.e. A[1,1] should be 1, A[1,2] should be 2, and A[1,3] should be 3.
-A <- matrix(seq(1,12), nrow=4, ncol=3, byrow=T)
-
-# Q2. Create a matrix object 'B' with 3 rows and 4 columns, filled with numbers 1,3,5,7,9,...23 by columns.
-# i.e. B[1,1] = 1, B[2,1] = 3, B[3,1] = 5, B[2,1] = 7 ...
-B <- matrix(seq(1, 23, 2), nrow=3, ncol=4)
-
-# Q3. Compute a matrix multiplication of A times B and assign the result to a matrix object 'D'
-D <- A %*% B
-
-# Q4. Compute a matrix multipliaction of D and the transpose of D 
-D %*% t(D)
 
 
 

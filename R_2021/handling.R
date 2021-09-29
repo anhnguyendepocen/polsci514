@@ -1,7 +1,7 @@
 ##################################################
-## POLSCI514 week3
+## POLSCI514 week4
 ## Introduction to R 
-## Date: 2019/9/20
+## Date: 2019/9/24
 ## Author: Saki Kuzushima
 ##################################################
 
@@ -32,11 +32,21 @@ temp$x + temp$y
 # Another type of vector : Factor  --------------------------------
 # Let's learn another type: factor. It is used for categorical variable. 
 country <- c("US", "Japan", "China", "Canada")
-country <- as.factor(country)
+country_factor <- as.factor(country)
+class(country_factor)
 class(country)
 
+# convert back to character
+country_char <- as.character(country_factor)
+country_char == country
+
+# More explicitly 
+sex_char <- c('m', 'f', 'm')
+sex_factor <- factor(sex_char, levels=c('m', 'f')) 
+
 # You can see that there is "levels", Canada, China, Japan and US. 
-levels(country)
+levels(country_factor)
+levels(sex_factor)
 
 # Factors are useful when you know the set of possible values but 
 # they’re not all present in a given dataset. 
@@ -48,10 +58,11 @@ sex_factor <- factor(sex_char, levels = c("m", "f"))
 table(sex_char)
 table(sex_factor)
 
+
 # Path ------------------------------------------------------------------------
 
 # A path is like an address of each file in a computer.
-# To read/write a file, you have to specity its path.
+# To read/write a file, you have to specify its path.
 
 # A computer has a hierarchical directory structure.
 # A directory (or folder) contains sub-directories, and each sub-directories 
@@ -88,6 +99,7 @@ list.files()
 # one dot: current directory 
 setwd('../') # set wd to the parent directory
 setwd('./pset') # set wd to the child directory, called 'pset'
+
 
 
 # Read and Write data ---------------------------------------------------------
@@ -129,7 +141,18 @@ class(world$age)
 # should be a factor, but if you are using R >= 4.0.0, it should be a character
 # To make the behavior consistent, R < 4.0.0 users should set 'stringsAsFactors' = FALSE in this exercise.
 
+# use sessionInfo() to check the version of R
+sessionInfo()
 
+# Mini quiz
+score_data <- data.frame(names=c('tom', 'james', 'mary', 'john', 'sarah', 'david',
+                                 'lisa', 'chris', 'mitchell', 'eric'),
+                         group=c(1,2,3,1,2,3,1,2,3,1),
+                         hw1=c(90, 89, 83, 28, 82, 72, 63, 12, 5, 64),
+                         hw2=c(82, 43, 98, 42, 57, 94, 11, 43, 42, 54))
+
+# Write the dataframe 'score_data' as a csv file.
+# Read the saved csv file and assign it to the object called 'new_score_data'
 
 # Packages --------------------------------------------------------------------
 
@@ -151,12 +174,11 @@ world_new <- read.dta("World.dta")
 # You can save as .dta using write.dta()
 write.dta(world_new, 'my_world.dta')
 
-
-
 # It is a common practice NOT to keep 'install.package()' in your code
 # but keep 'library()' only.
 # It is also recommended to have 'library()' in the first couple of lines of code
 # so other people can see which packages are required to execute your code.
+
 
 
 # Exercise: More on data subsets and summary  -------------------------------
@@ -201,24 +223,23 @@ write.dta(world_new, 'my_world.dta')
 
 # Q1. Read the data and print out the summary of the data
 
-
 # Q2. Compute the turnout rate based on the voting eligible population (VEP) for each election year. 
-veptr <- turnout$total / (turnout$VEP) * 100
 
 # Q3. Compute the difference between what you computed in Q2 vs ANES estiamte of turnout rate for each election year.  
-# What is the average difference across the election years?
-diff_veptr <- turnout$ANES - veptr
+# What is the average difference of the turnout rate based on the VEP, across the election years?
+# In which year the difference is the biggest?
 
-# Q4. Subset the data into two groups: One for 1980-1992 and the other for 1994-2008. 
-# Compute the average difference across the election years for both presidential and mid-term elections.  
+
+# Q4 create a vector with a factor class that indicate whether the election is presidential or mid-term. 
+# Add the vector as a column of the turnout data. Hint: use 'rep' function.
 
 # Q5. Subset the data into two groups: One for presidential elections and the other for mid-term elections. 
-# Compute the average difference across the election years for both presidential and mid-term elections.  
+# Compute the average difference in the turnout rate based on the VEP, across the election years for both presidential and mid-term elections.  
+# Which elections, presidential or mid-terms, have higher difference between ANES estimate and the turnout rate based on the VEP? 
 
-# NOTE: add more?
 
 # Matrix ----------------------------------------------------------------------
-# We learn anthor object similar to dataframe: Matrix. 
+# We learn anothor object similar to dataframe: Matrix. 
 
 # We learned that we can add names to a vector 
 X <- c(1,2,3,4,5,6)
@@ -226,17 +247,17 @@ names(X) <- c('a', 'b', 'c', 'd', 'e', 'f')
 # What we are doing here is that we are adding an attribute to a vector
 
 # Likewise, we can add a different attribute, dimensions.
-# This will effectively turns a vector into a matriX.
+# This will effectively turns a vector into a matrix.
 dim(X) <- c(2,3)
 X
 
 # Normally, we simply create a matrix using matrix() function. 
-# First, the following code will create a 2 * 2 matrix with all elemenets being 1. 
+# First, the following code will create a 2 * 2 matrix with all elements being 1. 
 X1 <- matrix(1, nrow = 2, ncol = 2)
 # You can supply a vector
 X2 <- matrix(c(1,2,3,4), nrow = 2, ncol = 2)
 X3 <- matrix(c(1,2,3,4), nrow = 2, ncol = 2, byrow=T)
-# Note that the vector is arranged by column (you can change this by byrow argument
+# Note that the vector is arranged by column (you can change this by 'byrow' argument
 # in the matrix function)
 
 # Add rownames and column names to a matrix
@@ -251,19 +272,20 @@ X1_new <- rbind(X1, newrow)
 newcol <- c(5,6)
 X2_new <- cbind(X2, newcol)
 
+# access elements of a matrix
+X1[1,1] # 1st row, 1st col
+
 # Matrix and scalar: element-wise operation
 X1 + 1
 X1 * 10
 X1 - 1
 X1 / 2
 
-# Matrix and matrix: element-wise operation (if conformable) 
+# Matrix and matrix: element-wise operation (if they have the same dimensions.) 
 X1 + X2
 X1 * X2
 X1 - X2
 X1 / X2
-
-
 
 # Whenever we do matrix multiplication, we have to be careful about the dimensions. 
 Y <- matrix(c(1,2,3,4,5,6), nrow = 2, ncol = 3)
@@ -275,7 +297,7 @@ dim(Y)
 dim(Z)
 dim(W)
 
-# When you multply matrices, use %*%, instead of *
+# When you multiply matrices, use %*%, instead of *
 # Remember that X %*% Y is possible only when the row length of X is the 
 # same as the column length of Y
 
@@ -289,9 +311,15 @@ Y %*% W
 # You can convert dataframe to matrix
 df <- data.frame(x = c(1,2), y = c(3,4))
 df_mat <- as.matrix(df)
+class(df_mat)
+
+# Or matrix to dataframe
+X1_df <- as.data.frame(X1)
+class(X1_df)
+
 
 # You can do matrix multiplication with matrix but not with dataframe
-# THis returns error
+# This returns error
 df %*% X # error
 
 # But this is possible 
@@ -308,12 +336,22 @@ X2 %*% X2
 t(Y)
 # This will invert the matrix
 solve(X2)
-# THis will return error because only square matrices can be invertible. 
+# This will return error because Y is not a square matrix 
 solve(Y) # error
 
 # Exercise --------------------------------------------------------------------
 
-# NOTE: Add exercise
+# Q1. Create a matrix object 'A' with 4 rows and 3 columns, filled with numbers 1...12 by rows.
+# i.e. A[1,1] should be 1, A[1,2] should be 2, and A[1,3] should be 3.
+
+# Q2. Create a matrix object 'B' with 3 rows and 4 columns, filled with numbers 1,3,5,7,9,...23 by columns.
+# i.e. B[1,1] = 1, B[2,1] = 3, B[3,1] = 5, B[2,1] = 7 ...
+
+# Q3. What is the 3rd row, 3rd column element of the matrix B?
+
+# Q4. Compute a matrix multiplication of A times B and assign the result to a matrix object 'D'
+
+# Q5. Compute a matrix multiplication of D and the transpose of D 
 
 
 
