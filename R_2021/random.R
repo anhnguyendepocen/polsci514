@@ -256,5 +256,36 @@ qqline(data)
 ################################################################################
 
 
+# Setting 'seed' for random number generations #################################
+
+# It is recommended to set the seed of random numebr generators for reproduciability. 
+# It is a common practice to put it at the top of the code (below library() calls)
+
+## Seed the current RNG, i.e., set the RNG status
+set.seed(42)
+u1 <- runif(30)
+seed1 <- .Random.seed
+set.seed(42)
+u2 <- runif(30) # the same because of identical RNG status:
+seed2 <- .Random.seed
+
+identical(u1, u2)
+identical(seed1, seed2)
+
+# Unset (remove) current seed
+rm(.Random.seed)
+
+## This is helpful to reproduce the sample results when you use random number generation
+
+set.seed(13)
+x <- rnorm(10)
+mean(x) # The value should be 0.6000538 for everyone. 
+
+rm(.Random.seed)
+x <- rnorm(10)
+mean(x) # the values should be different from people to people
+
+
+
 
 
