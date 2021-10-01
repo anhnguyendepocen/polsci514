@@ -36,6 +36,13 @@ for (i in 1:10){
 # You can draw multiple samples. If you want to throw a die twice, 
 sample(seq(1,6), size = 2, replace = T)  #replace = T allows us to get the same face more than once. 
 
+## Mini quiz ##################################################################
+# 1. draw a sample of size 2 from a sequence of integer from 1 to 10 (i.e., 1, 2, ..., 10)
+# using sampling without replacement
+
+# 2. draw a sample of size 5 from a vector ('a', 'b', 'c') using sampling with replacement
+
+################################################################################
 
 # What if you want to generate more complicated random numbers? For instance, 
 # how to generate random numbers that follows normal distribution? 
@@ -227,8 +234,8 @@ abline(a=0,b=1)
 # However, in reality, we do not know this (that is why we want to use QQ plot to check if the distributions are the same).
 # What if you just have two datasets, and you want to check whether the datasetsare a sample from the same distribution? 
 
-# Suppose this is an observed data
-data <- rt(1000, df = 3) # random sample from t-distribution with defree of freedom 3. 
+# Suppose this is an observed data and you don't know the distributio of it. 
+data <- rt(1000, df = 3) # In fact, this is a random sample from t-distribution with defree of freedom 3. 
 
 # And you guessed if this is from N(0, 1). 
 x <- rnorm(n = 1000, mean=0, sd=1)
