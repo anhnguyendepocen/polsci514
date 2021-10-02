@@ -11,7 +11,7 @@
 
 A <- matrix(seq(1,12), nrow=4, ncol=3, byrow=T)
 # 2. Create a matrix object 'B' with 3 rows and 4 columns, filled with numbers 1,3,5,7,9,...23 by columns.
-# i.e. B[1,1] = 1, B[2,1] = 3, B[3,1] = 5, B[2,1] = 7 ...
+# i.e. B[1,1] = 1, B[2,1] = 3, B[3,1] = 5, B[1,2] = 7 ...
 B <- matrix(seq(1, 23, 2), nrow=3, ncol=4)
 
 # 3. What is the 3rd row, 3rd column element of the matrix B?
