@@ -39,9 +39,9 @@ sample(seq(1,6), size = 2, replace = T)  #replace = T allows us to get the same 
 ## Mini quiz ##################################################################
 # 1. draw a sample of size 2 from a sequence of integer from 1 to 10 (i.e., 1, 2, ..., 10)
 # using sampling without replacement
-
+sample(seq(1, 10), 2, F)
 # 2. draw a sample of size 5 from a vector ('a', 'b', 'c') using sampling with replacement
-
+sample(c('a', 'b', 'c'), 5, F)
 ################################################################################
 
 # What if you want to generate more complicated random numbers? For instance, 
@@ -49,35 +49,35 @@ sample(seq(1,6), size = 2, replace = T)  #replace = T allows us to get the same 
 # You can use rnorm() function. 
 
 # The following code will generate 10 random numbers 
-# from the standard normal distribution (mean = 0, standard devidation = 1)
+# from the standard normal distribution (mean = 0, standard deviation = 1)
 rnorm(n = 10, mean = 0, sd = 1)
 
 # Remember that we used hist() function to create a histogram
 x <- rnorm(n = 100, mean = 0, sd = 1)
 hist(x, 
-     breaks=seq(-3, 3, 0.5), # set the size of bin to be 0.5
+     breaks=seq(-5, 5, 0.5), # set the size of bin to be 0.5
      main='Standard normal distribution') #set figure title
 
 # If you increase the sample size, the histogram resembles the normal distribution more. 
-x <- rnorm(n = 1000, mean = 0, sd = 1)
+x <- rnorm(n = 100000, mean = 0, sd = 1)
 hist(x)
 
 # This code will generate 10 random numbers 
 # from the uniform distribution between 0 and 1. 
 # You can increase the sample size to make the histogram close to the uniform distribution.
-y <- runif(n = 1000000, min = 0, max = 1)
+y <- runif(n = 1000, min = 0, max = 1)
 hist(y)
 
 
 
 
-# These family of functions have very similar names. Adding the folloiwng alphabet 
-# to the abbrebiation of distribution (e.g. norm, unif) will craete a name of a function. 
+# These family of functions have very similar names. Adding the following alphabet 
+# to the abbreviation of distribution (e.g. norm, unif) will create a name of a function. 
 
 # r: random number generation
 # p: cumulative distribution function (CDF)
 # d: probability density function (PDF) or probability mass function (PMF)
-# q: quantile funciton
+# q: quantile function
 # To see what arguments we need to supply, use help (? + function name)
 
 # We worked with two "r" function (rnorm and runif), so let's move on to p, d, and q function.
@@ -91,10 +91,10 @@ punif(q = 0.5, min = 0, max = 1)
 pnorm(q = 0, mean = 0, sd = 1)
 
 
-# "d" function generates PDF (if continuous) or PMF (if descrete).
+# "d" function generates PDF (if continuous) or PMF (if discrete).
 # This generates a PDF of X ~ N(0,1) evaluated at x = 1.
 dnorm(x = 1, mean = 0, sd = 1)
-# Note that this is NOT the probability that X = 1, X ~ N(0, 1). Such probbaility is zero because X is continuous. 
+# Note that this is NOT the probability that X = 1, X ~ N(0, 1). Such probability is zero because X is continuous. 
 
 # You can plot a nice PDF of normal distribution using dnorm function.
 x <- seq(-3, 3, 0.01)
@@ -110,14 +110,14 @@ dunif(x = 5, min = 2, max = 10)
 # if you want to obtain a quantile function of the standard normal distribution
 x <- qnorm(p = 0.975, mean = 0, sd = 1)
 x
-# Because quantile function is the invrese of CDF, 
-# This resturns 0.975, which we used for qnorm function. 
+# Because quantile function is the inverse of CDF, 
+# This returns 0.975, which we used for qnorm function. 
 pnorm(q = x, mean = 0, sd = 1)
 
 # We learned "inverse CDF method" to generate random numbers from any probability distribution. 
 # There are two steps in this method. 
 
-# (1) Generate rnadom numbers, U, from Unif(0,1)
+# (1) Generate random numbers, U, from Unif(0,1)
 # (2) Provide (1) in the inverse of the desired CDF, (i.e. quantile function).
 # The output from (2) is the random numbers from the desired distribution. 
 
@@ -137,23 +137,22 @@ hist(X)
 
 # 1. Draw a sample of size 10 from a normal distribution with mean 1 and variance 4. 
 
-# 2. Plot a histogram using the sample you draw in Q2. 
+# 2. Plot a histogram using the sample you draw in Q1. 
 
 # 3 Repeat Q1 and Q2 for different sample sizes: 100, 1000, and 10000. What do you notice? 
 
-# 4. Compute the CDF of normal distribution with mean 0 and variance 1, evaluated at 1.
+# 4*. Compute the CDF of normal distribution with mean 0 and variance 1, evaluated at 1.
 
 # 5. Draw a sample of size 10000 from a uniform distribution with the minimum value being 5 and the maximum value being 10. 
 #    Plot a histogram using the sample. 
 
-# 6. Compute the 0.025 quantile of the standard normal distribution (mean = 0, variance = 1). 
+# 6*. Compute the 0.025 quantile of the standard normal distribution (mean = 0, variance = 1). 
 #    Compare it with the 0.975 quantile of the same distribution. What do you notice? 
-
 ################################################################################
 
 
 # QQ plot ######################################################################
-# QQ plot is a plot of two quantile funcitons, and is used to check if the data is generated from some known distribution. 
+# QQ plot is a plot of two quantile functions, and is used to check if the data is generated from some known distribution. 
 # 
 # Let's start with the simple case. 
 # Suppose we have two datasets, generated by two unknown distributions. 
@@ -162,7 +161,7 @@ hist(X)
 
 
 # Suppose data are generated from N(0, 1), T(df = 2) and Unif(-1,1) 
-# For refernece, the actual CDF of these distributions look like the following.
+# For referenece, the actual CDF of these distributions look like the following.
 temp <- seq(-3, 3, 0.001)
 
 # N(0,1)
