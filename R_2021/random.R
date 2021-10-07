@@ -9,7 +9,6 @@
 # and tossing coins. Although we could simulate this process physically by actually throwing coins, and die, 
 # We do not always have coins, let alone dice. 
 # How should we do this in R? There is a handy function to do this: sample()
-
 # sample(), as its name suggests, draws a sample of size (1) from c('H', 'T'). 
 sample(c('H', 'T'), size = 1)
 
@@ -148,6 +147,7 @@ hist(X)
 
 # 6*. Compute the 0.025 quantile of the standard normal distribution (mean = 0, variance = 1). 
 #    Compare it with the 0.975 quantile of the same distribution. What do you notice? 
+
 ################################################################################
 
 
