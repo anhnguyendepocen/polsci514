@@ -1,93 +1,45 @@
 ##################################################
 ## POLSCI514: Loop 
 ##################################################
-# Hypothetical question:
-# Also suppose that you took a survey on 100 people in a town and asked whether they are a Democrat or a Republican. 
-# (Let's assume that they always answer truthfully....)
-# How would you infer the proportion of people who support Republican in this town?
-
-# We can use a sample mean as an estimate of the population mean, but how to assess the quality of the estimate?
-# Simulation provides one solution - it assumes that the population is known and we define it.
-# Then, draw samples from the population, and compare the sample vs population statistics. 
-
-# Example: 
-# Suppose there are 1000 voters in a town, some are republican and others are democrats. 
-# The following code defines the 1000 voters. 
-pop <- c(rep('R', 500), rep('D', 500))
-# So that the true proportion of people who support Republican in this town is 0.5.
-
-# we draw a sample of size 100
-s1 <- sample(pop, 100)
-
-# Mini quiz: Compute the proportion of Democrats and Republican in your sample 
-
-
-# Is this a good estimate? 
-# Are we just lucky and get a good estimate, or is our estimator always good?
-
-# We can use simulation to draw sample repeatedly many times, so that
-# we can observe the distribution of the sample statistics.
-# By comparing the distribution of the sample statistic with the population, 
-# we can evaluate if the estimator is a good one or not. 
-
-# What happens if we draw many samples? 
-# Be aware of the difference of "sample size" and "the number of sample"
-# In a survey context, "sample size" is the number of respondents, and 
-# "the number of sample" is the number of times you conducted the survey.
-
-# To draw samples repeatedly, we can use "for" loop.
-
-# The number of sample 
-K <- 1000 
-
-# storage
-result <- data.frame(R = rep(0, K),
-                     D = rep(0, K))
-
-# "for" loop for simulation
-for (k in 1:K){
-  # draw 10 balls from the bag
-  s <- sample(pop, 10)
-  
-  result[k,'R'] <- mean(s == 'R') 
-  result[k,'D'] <- mean(s == 'D') 
-}
-result
-
-# Plot the histogram of the distribution of the proportion of Republicans in your samples 
-hist(result$R, breaks=seq(0, 1, 0.1))
-abline(v=0.5, col='red')
-
-# You can tell that, on average, your estimator works well to estimate the proportion of Republican in the town.
+# "for" "while" loop
+# "if-else" conditionals
+# application: simulation 
 
 
 # About "For" loop ------------------------------------------
 
+# Loops are helpful to do the same computation many times.
+
+# Example:
 for (i in 1:10){
   print(i)
 }
 
-# This is called "for loop". This for loop computes the code inside the curly brackets {}, for each i in 1:10. 
+# This is called "for loop". This "for" loop computes the code inside the curly brackets {}, for each i in 1 to 10. 
 # Because i takes values from 1 up to 10, it prints out the current i (1, 2, 3... 10). 
 
-# Remember that we saw the following code in the coin flip example
+# Another example: 
+# This "for" loop prints out the result of sampling one of "T" or "F" for 10 times. 
+# Note that the computation inside {} does not have to have "i" 
 for (i in 1:10){
   print(sample(c('T', 'F'), 1))
 }
-# This for loop computes the code inside the {}, 10 times. 
 
-# You can use vector to store the sequence of the outputs. 
-out <- rep(1, 10)
-# out <- c()  # alternative: without specifying the length
+# You can use vector to store the outputs. 
+# First, create a storage. This creates a vector of length 10 with all elements being 0.
+out <- rep(0, 10)
+#out <- c()  # alternative: You can create an empty vector without specifying the length
 for (i in 1:10){
   out[i] <- sqrt(i)
+  cat('i = ', i, ' out[',i,'] =', out[i], '\n')
 }
 
-# Example: 
-# Suppose we roll a die once, and record the number of times each face shows up.
+# Example question: 
+# Suppose we roll a die once, and record which face shows up.
 # Repeat the process 100 times, and find the distribution of the times each face showed up. 
 
-# storage
+# First, create a vector to record which face shows up at i th roll of a die. 
+# i ranges from 1 to 100. 
 out <- rep(0, 100) 
 
 # loop 
@@ -103,14 +55,13 @@ out
 out_tbl <- table(out)
 barplot(out_tbl)
 
-# Soemtimes one loop is not enough. You can loop over the loop! 
 
-# See this code and compare with the following code
+# Sometimes one loop is not enough. You can loop over the loop! 
+# Compare the following two loops  
 for (i in 1:5){
   cat("i =", i, '\n')
 }
 
-# see the example of the "nested loop" 
 for (i in 1:5){
   for (j in 1:3){
     cat("i =", i, ' j =', j, '\n')
@@ -123,7 +74,8 @@ for (i in 1:5){
 # So, when i = 1, j goes from 1 to 3, when i = 2, j goes from 1 to 3 again, 
 # upto when i = 5, j goes from 1 to 3. 
 
-# For example, suppose you have the following data :
+# Example: suppose you have the following panel data 
+# Panel data is often used in IR and comparative.
 panel <- expand.grid(c('US', 'Canada', 'Mexico'), seq(2000, 2020))
 colnames(panel) <- c('country', 'year')
 panel <- panel[order(panel$country, panel$year),]
@@ -134,6 +86,7 @@ rownames(panel) <- seq(1, nrow(panel))
 for (country in c('US', 'Canada', 'Mexico')){
   for (year in seq(2000, 2020)){
     cat('country: ', country, ' year: ', year, '\n')
+    # do some computation here
   }
 }
 
@@ -141,17 +94,38 @@ for (country in c('US', 'Canada', 'Mexico')){
 # 1. Compute sum of x^2 for x = 1,2,...10. using "for" loop. 
 #    Hint: First, create a vector of storage. Then, use "for" loop to compute x^2 for x = 1,2,...10.
 #    Then, compute the sum of the vector.
+out <- rep(0, 10)
+for (x in 1:10){
+  out[x] <- x^2
+}
+sum(out)
+
 
 # 2. Draw a sample of size 100 from a standard normal distribution 1000 times.  
 #    Compute the sample mean for each sample, and plot the histogram of the sample means.
+out <- rep(0, 1000)
+for (i in 1:1000){
+  sample_norm <- rnorm(100, 0, 1)
+  out[i] <- mean(sample_norm)
+}
+hist(out)
 
-# 3*. Fibonacci sequence is defined as 0, 1, 1, 2, 5, 8... 
+
+
+# 3*. Fibonacci sequence is defined as 0, 1, 1, 2, 3, 5, 8... 
 #    i.e. x(t) = x(t-1) + x(t-2), with x(1) = 0, x(2) = 1. 
 #    Compute the 30th number in the Fibonacci sequence.
+x <- rep(0, 30)
+x[1] <- 0
+x[2] <- 1
+for (i in 3:30){
+  x[i] <- x[i-1] + x[i-2]
+}
+
 
 # -----------------------------------------------------------------
 
-# There is another type of look, "while" loop. 
+# There is another type of loop, "while" loop. 
 # This is not used very often, but it is good to know that it exists.
 # This is particularly helpful when you want to continue looping until
 # certain condition is met.
@@ -183,12 +157,23 @@ while (x < 100){
 
 # Check if x < 100. THis is FALSE because x = 256 > 100.  Loop stops! 
 
+
+# Be careful with the infinite loop when you use "while" loop
+# DO NOT RUN
+x <- 1
+while(x > 0){
+  x <- x + 1
+  print(x)
+}
+# If you accidentally enter an infinite loop, typing Ctrl + C on the console will kill the  process.  
+
 # conditionals ----------------------------------------------------------------
 
 # You can combine conditionals - "if-else" - with loops to do more things
 
 # The following code checks if i is even or odd.
-# Note that i %%2 == 0 returns TRUE if i is divisible by 2.
+# Note that i %% 2 == 0 returns TRUE if i is divisible by 2. (This is called modulo.)
+
 for (i in seq(1, 10)){
   print(i)
   if (i %% 2 == 0){ # condition (logical statement)
@@ -198,7 +183,14 @@ for (i in seq(1, 10)){
   }
 }
 
-# One common way of using "if-else" is to count the number of current iteration 
+for (i in seq(1, 10)){
+  print(i)
+  if (i %% 2 == 0){ # condition (logical statement)
+    print('even')   # execute this part if the condition is TRUE
+  }
+}
+
+# One way of using "if-else" is to count the number of current iteration 
 # This is particularly helpful if your loop takes long time. 
 for (i in seq(1, 10000)){
   # do some computation here
@@ -206,6 +198,29 @@ for (i in seq(1, 10000)){
   if (i %% 1000 == 0){
     cat('i= ', i, '\n')
   }
+}
+
+# You can use if-else condition to write the stopping condition of the loop
+# To do that, use "break". Once the loop hits "break", the loop will terminate. 
+for (i in 1:50){
+  h <- i * 3
+  print(h)
+  if (h > 90){ # if h is greater than 90, break the loop
+    break
+  }
+}
+
+# You can add another stopping condition to while loop, using if-break
+# Note that it is risky to put "TRUE" in the conditional statement.
+# If "if-break" condition is not met, this type of loop can run forever...
+x <- 1 
+while (TRUE){
+  print(x)
+  if (x == 6){
+    print("stop!")
+    break
+  }
+  x <- x + 1
 }
 
 # Another version of "if-else" is an ifelse() function.
@@ -219,28 +234,6 @@ y <- ifelse(x > 0, T, F)
 x <- seq(1, 10)
 y <- ifelse(x %% 2 == 0, "even", "odd")
  
-# You can use if-else condition to write the stopping condition of the loop
-# To do that, use "break". Once the loop hits "break", the loop will terminate. 
-for (i in 1:50){
-  h <- i * 3
-  print(h)
-  if (h > 90){ # if h is greater than 90, break the loop
-    break
-  }
-}
-
-# You can add another stopping condition to while loop, using if-break
-# Note that it is risky to put "TRUE" in the conditional statemnet.
-# If "if-break" condition is not met, this type of loop can run forever...
-x <- 1 
-while (TRUE){
-  print(x)
-  if (x == 6){
-    print("stop!")
-    break
-  }
-  x <- x + 1
-}
 
 
 # Quiz -------------------------------------------------------------------------
@@ -250,8 +243,30 @@ die_pair <- sample(seq(1, 6), 2, replace=T)
 # will simulate a pair of die roll.
 # Using loops, simulate this process 1000 times. 
 
-# 2. Perform the same process as Q1, but stop the iteration if the faces of the pair of dies are the same. 
+for (i in 1:1000){
+  die_pair <- sample(seq(1, 6), 2, replace=T)
+  print(die_pair)
+}
 
-# 3. Perform the same process as Q1, and compute the number of times when the sum of the two faces are larger than 7. 
+# 2. Perform the same process as Q1, but stop the iteration if the faces of the pair of dies are the same. 
+for (i in 1:1000){
+  die_pair <- sample(seq(1, 6), 2, replace=T)
+  print(die_pair)
+  if (die_pair[1] == die_pair[2]){
+    break
+  }
+}
+# 3. Perform the same process as Q1, and compute the number of times the sum of the two faces is larger than 7. 
+out <- rep(0, 1000)
+for (i in 1:1000){
+  die_pair <- sample(seq(1, 6), 2, replace=T)
+  print(die_pair)
+  out[i] <- sum(die_pair)
+}
+sum(out > 7)
+
+
+# 4. Perform the same process as Q1, and plot the histogram of the sum of two faces.
+hist(out)
 
 
