@@ -1,20 +1,6 @@
-##################################################
-## POLSCI514 week8
-## Introduction to R 
-## Date: 2019/10/18
-## Author: Saki Kuzushima
-##################################################
+# Array and List 
 
-
-# Topics
-# (1) Custom functions
-# (2) List and Array
-
-# TODO: Add exercise using lapply? Create hw file
-
-# (1) Array and List  ---------------------------------------------------------
-
-# (1.1) Array 
+# Array  ---------------------------------------------------------------
 
 # Quick review of matrix...
 x <- matrix(c(1,2,3,4), nrow = 2)
@@ -98,13 +84,18 @@ a
 # Then, you can access each elemnet by the dimension name
 a["one", "A", "x"]
 
-# Mini quiz (Not homework)
-# Going back to the original problem, can we express the summary of the survey data using a 3D array? 
+# Quiz (homework) --------------------------------------------------------------
+# 1. Going back to the original problem, can we express the summary of the survey data using a 3D array? 
 # What is the dimension of this array? (i.e. what is "dim" argument?)
 
+# 2. Using the array, obtain the number of white male without college eduation who voted. 
+
+# 3. Using the array, obtain the number of male who voted (regardless of education level and race). 
+
+# 4. Using the original data (survey_data), make sure that your answers to Q2 and Q3 are correct.
 
 
-# (1.2) List  -----------------------------------------------------------------
+# List  -----------------------------------------------------------------
 
 # Let me introduce another class -- list, which we just saw. 
 # The most distinct part of list is that it can contain the object with different classes, 
@@ -161,19 +152,4 @@ MyVar <- function(x){
 }
 lapply(my_list5, MyVar)
 lapply(my_list5, var)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
