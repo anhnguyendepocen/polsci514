@@ -43,6 +43,8 @@ apply(mat, 2, sum)
 apply(mat, 1, max)
 apply(mat, 1, min)
 
+apply(mat, 1, which.max)
+
 # Simple alternative
 colSums(mat)
 rowSums(mat)
@@ -129,6 +131,11 @@ turnout$type <- ifelse(turnout$year %% 4 == 0, "pres", "mid")
 
 # compute the average ANES estimate of turnout for presidential and midterm 
 tapply(turnout$ANES, turnout$type, mean)
+
+# Example: 
+data(iris)
+# Mini quiz: Compute the mean petal length and petal width for each species of iris 
+
 
 
 # Quiz (HW) ------------------------------------------------------------------
